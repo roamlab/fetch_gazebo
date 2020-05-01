@@ -1,0 +1,44 @@
+<?xml version='1.0'?>
+<sdf version="1.4">
+  <model name="meat_can">
+    <static>0</static>
+    <link name="link">
+      <inertial>
+        <mass>0.34</mass>
+        <!-- https://www.google.com/search?q=12+oz+to+kg&oq=12+oz+to+kg&aqs=chrome..69i57j6j0.1740j0j4&sourceid=chrome&ie=UTF-8 -->
+        <inertia> <!-- inertias are tricky to compute -->
+          <!-- http://gazebosim.org/tutorials?tut=inertia&cat=build_robot -->
+          <ixx>0.000287</ixx>    <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+          <ixy>0.0</ixy>         <!-- for a box: ixy = 0 -->
+          <ixz>0.0</ixz>         <!-- for a box: ixz = 0 -->
+          <iyy>0.000381</iyy>    <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+          <iyz>0.0</iyz>         <!-- for a box: iyz = 0 -->
+          <izz>0.000578</izz>    <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <pose>-0.005 0 -0.01 0 1.57 0</pose>
+        <geometry>
+          <box>
+            <size>0.081 0.093 0.057</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <pose>-0.03 0.035 -0.047 -1.57 -0 1.51</pose>
+        <geometry>
+          <mesh>
+            <uri>model://meat_can/meshes/meat_can.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+    </link>
+  </model>
+</sdf>
