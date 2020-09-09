@@ -12,7 +12,7 @@ arm_controller:
   gravity_compensation:
     type: "robot_controllers/GravityCompensation"
     root: "torso_lift_link"
-    tip: "gripper_link"
+    tip: "palm_link"
     autostart: true
   cartesian_twist:
     type: "robot_controllers/CartesianTwistController"
@@ -51,14 +51,14 @@ base_controller:
   type: "robot_controllers/DiffDriveBaseController"
   autostart: true
 
-gripper_controller:
-  gripper_action:
-    type: "robot_controllers/ParallelGripperController"
-    centering:
-      p: 1000.0
-      d: 0.0
-      i: 0.0
-      i_clamp: 0.0
+# gripper_controller:
+#   gripper_action:
+#     type: "robot_controllers/ParallelGripperController"
+#     centering:
+#       p: 1000.0
+#       d: 0.0
+#       i: 0.0
+#       i_clamp: 0.0
 
 bellows_controller:
   type: "robot_controllers/ScaledMimicController"
@@ -77,7 +77,7 @@ gazebo:
     - "head_controller/follow_joint_trajectory"
     - "head_controller/point_head"
     - "torso_controller/follow_joint_trajectory"
-    - "gripper_controller/gripper_action"
+    # - "gripper_controller/gripper_action"
     - "bellows_controller"
   l_wheel_joint:
     position:
@@ -222,25 +222,25 @@ gazebo:
       d: 0.0
       i: 0.0
       i_clamp: 0.0
-  l_gripper_finger_joint:
-    position:
-      p: 5000.0
-      d: 0.0
-      i: 0.0
-      i_clamp: 0.0
-    velocity:
-      p: 0.0
-      d: 0.0
-      i: 0.0
-      i_clamp: 0.0
-  r_gripper_finger_joint:
-    position:
-      p: 5000.0
-      d: 0.0
-      i: 0.0
-      i_clamp: 0.0
-    velocity:
-      p: 0.0
-      d: 0.0
-      i: 0.0
-      i_clamp: 0.0
+  # l_gripper_finger_joint:
+  #   position:
+  #     p: 5000.0
+  #     d: 0.0
+  #     i: 0.0
+  #     i_clamp: 0.0
+  #   velocity:
+  #     p: 0.0
+  #     d: 0.0
+  #     i: 0.0
+  #     i_clamp: 0.0
+  # r_gripper_finger_joint:
+  #   position:
+  #     p: 5000.0
+  #     d: 0.0
+  #     i: 0.0
+  #     i_clamp: 0.0
+  #   velocity:
+  #     p: 0.0
+  #     d: 0.0
+  #     i: 0.0
+  #     i_clamp: 0.0

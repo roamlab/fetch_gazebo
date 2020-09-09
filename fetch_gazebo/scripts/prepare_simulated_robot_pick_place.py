@@ -14,7 +14,7 @@
 #     * Neither the name of the Fetch Robotics Inc. nor the names of its
 #       contributors may be used to endorse or promote products derived from
 #       this software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -66,10 +66,10 @@ if __name__ == "__main__":
     arm_client.wait_for_server()
     rospy.loginfo("...connected.")
 
-    rospy.loginfo("Waiting for gripper_controller...")
-    gripper_client = actionlib.SimpleActionClient("gripper_controller/gripper_action", GripperCommandAction)
-    gripper_client.wait_for_server()
-    rospy.loginfo("...connected.")
+    # rospy.loginfo("Waiting for gripper_controller...")
+    # gripper_client = actionlib.SimpleActionClient("gripper_controller/gripper_action", GripperCommandAction)
+    # gripper_client.wait_for_server()
+    # rospy.loginfo("...connected.")
 
     trajectory = JointTrajectory()
     trajectory.joint_names = head_joint_names
@@ -105,15 +105,15 @@ if __name__ == "__main__":
     arm_goal.trajectory = trajectory
     arm_goal.goal_time_tolerance = rospy.Duration(0.0)
 
-    gripper_goal = GripperCommandGoal()
-    gripper_goal.command.max_effort = 10.0
-    gripper_goal.command.position = 0.1
+    # gripper_goal = GripperCommandGoal()
+    # gripper_goal.command.max_effort = 10.0
+    # gripper_goal.command.position = 0.1
 
     rospy.loginfo("Setting positions...")
     head_client.send_goal(head_goal)
     arm_client.send_goal(arm_goal)
-    gripper_client.send_goal(gripper_goal)
-    gripper_client.wait_for_result(rospy.Duration(5.0))
+    # gripper_client.send_goal(gripper_goal)
+    # gripper_client.wait_for_result(rospy.Duration(5.0))
     arm_client.wait_for_result(rospy.Duration(6.0))
     head_client.wait_for_result(rospy.Duration(6.0))
     rospy.loginfo("...done")
